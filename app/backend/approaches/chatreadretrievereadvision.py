@@ -63,19 +63,55 @@ class ChatReadRetrieveReadVisionApproach(ChatApproach):
     @property
     def system_message_chat_conversation(self):
         return """
-        You are an intelligent assistant helping analyze the Annual Financial Report of Contoso Ltd., The documents contain text, graphs, tables and images.
-        Each image source has the file name in the top left corner of the image with coordinates (10,10) pixels and is in the format SourceFileName:<file_name>
-        Each text source starts in a new line and has the file name followed by colon and the actual information
-        Always include the source name from the image or text for each fact you use in the response in the format: [filename]
-        Answer the following question using only the data provided in the sources below.
-        If asking a clarifying question to the user would help, ask the question.
-        Be brief in your answers.
-        For tabular information return it as an html table. Do not return markdown format.
-        The text and image source can be the same file name, don't use the image title when citing the image source, only use the file name as mentioned
-        If you cannot answer using the sources below, say you don't know. Return just the answer without any input texts.
+As a business owner, navigating the complexities of GDPR and ensuring the protection of personal data are paramount. In light of recent events, the need for a clear understanding and robust strategy for data breach prevention and response has never been more critical. Please provide a comprehensive guide covering the following aspects:
+
+Overview of GDPR: Briefly describe the General Data Protection Regulation (GDPR), focusing on its significance and the obligations it places on businesses handling personal data of EU citizens.
+
+GDPR Compliance Requirements: Outline the key GDPR compliance requirements for businesses, including data protection principles, rights of data subjects, and the role of data protection officers.
+
+Data Breach Prevention Strategies:
+
+Risk Assessment: Explain the importance of conducting regular data protection impact assessments to identify vulnerabilities.
+Employee Training: Discuss the role of employee awareness and training in preventing data breaches.
+Security Measures: List recommended technical and organizational measures to safeguard data against breaches.
+Data Breach Response Steps:
+
+Immediate Actions: Describe the initial steps to take once a data breach is detected, including containment and assessment of the breach.
+Notification Requirements: Detail the GDPR's notification requirements for data breaches, including timelines and the information to be provided to the supervisory authority and affected individuals.
+Remediation and Review: Outline the process for addressing the causes of the breach and implementing measures to prevent future occurrences.
+Case Studies and Examples: Provide examples or case studies of how businesses successfully navigated GDPR compliance and data breach responses, highlighting lessons learned and best practices.
+
+Additional Resources: Recommend resources for further guidance on GDPR compliance and data breach management, such as official EU documentation, cybersecurity frameworks, and professional advisories.
+
+Each image source has the file name in the top left corner of the image with coordinates (10,10) pixels and is in the format SourceFileName:<file_name>
+Each text source starts in a new line and has the file name followed by colon and the actual information
+Always include the source name from the image or text for each fact you use in the response in the format: [filename]
+Answer the following question using only the data provided in the sources below.
+If asking a clarifying question to the user would help, ask the question.
+Be brief in your answers.
+For tabular information return it as an html table. Do not return markdown format.
+The text and image source can be the same file name, don't use the image title when citing the image source, only use the file name as mentioned
+If you cannot answer using the sources below, say you don't know. Return just the answer without any input texts.
+
+Always use user language in the answer.
+
         {follow_up_questions_prompt}
         {injected_prompt}
         """
+        # return """
+        # You are an intelligent assistant helping analyze the Annual Financial Report of Contoso Ltd., The documents contain text, graphs, tables and images.
+        # Each image source has the file name in the top left corner of the image with coordinates (10,10) pixels and is in the format SourceFileName:<file_name>
+        # Each text source starts in a new line and has the file name followed by colon and the actual information
+        # Always include the source name from the image or text for each fact you use in the response in the format: [filename]
+        # Answer the following question using only the data provided in the sources below.
+        # If asking a clarifying question to the user would help, ask the question.
+        # Be brief in your answers.
+        # For tabular information return it as an html table. Do not return markdown format.
+        # The text and image source can be the same file name, don't use the image title when citing the image source, only use the file name as mentioned
+        # If you cannot answer using the sources below, say you don't know. Return just the answer without any input texts.
+        # {follow_up_questions_prompt}
+        # {injected_prompt}
+        # """
 
     async def run_until_final_call(
         self,
